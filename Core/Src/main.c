@@ -101,7 +101,7 @@ int main(void)
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET); // Reset The Orange Led
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET); // Reset The Red Led
 
-  CAN1_Tx(); // Use this method when Transmitting, Comment or remove if the Device should Only Receive.
+//  CAN1_Tx(); // Use this method when Transmitting, Comment or remove if the Device should Only Receive.
   CAN1_Rx(); // Use this method when Receiving, Comment or remove if the Device should Only Transmit.
 
   /* USER CODE END 2 */
@@ -201,13 +201,14 @@ static void MX_CAN1_Init(void)
   if(HAL_CAN_Start(&hcan1) != HAL_OK){
 	  Error_Handler();
   }
-/*
 
   // Activate Interrupts for the CAN1 Peripheral
+  /*
   if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
   {
 	  Error_Handler();
   }
+  */
   /* USER CODE END CAN1_Init 2 */
 
 }
@@ -394,7 +395,7 @@ void CAN1_Rx(){
 		Error_Handler();
 	}
 
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET); //SET The Green Led if the Receival is successful.
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET); //SET The Green Led if the Receival is successful.
 
 }
 
